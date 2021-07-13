@@ -25,7 +25,7 @@ con difficoltà 2 => tra 1 e 50
 
 // 1. Creare array per le bombe
 // 2. Creare array per ricordare i nomi scelti dall'utente
-// 3. Creare let del punteggio
+// 3. Creare var del punteggio
 // 4. Creare funzione per generare nr random FINCHE' non arrivo a 16 numeri DIVERSI tra loro. Push di ogni numero in array bombe (punto 1)
 
 // BLOCCO 2 - Gioco 
@@ -43,3 +43,38 @@ con difficoltà 2 => tra 1 e 50
 
 // imposto alert contenente: game over e punteggio
 // imposto alert contenente win e punteggio
+
+
+// ------------------ CODICE ------------------
+
+// Blocco 1 - Creazione vari array + funzione generazione numeri random
+
+let bombs = [];
+let userNumbers = [];
+let points = 0;
+
+
+// ATTENZIONE: TODO - aggiungere condizione per avere solo numeri diversi 
+
+function generateNumbers(min, max, arrayBombs) {
+
+    let i = 0;
+    while (i < 16) {
+
+        arrayBombs.push(Math.floor(Math.random() * (max - min + 1) + min));
+
+        i++
+    }
+
+    return arrayBombs;
+}
+
+bombs = generateNumbers(1, 100, bombs);
+
+// check bombs generator:
+// console.log(bombs);
+
+
+
+
+
