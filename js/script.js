@@ -88,8 +88,7 @@ console.log(bombs);
 var userChoice = parseInt(prompt("Scegli un numero da 1 a 100", 1));
 
 
-// 2. Controllare se il numero scelto è in array bombe. Se sì, game over.
-
+// FINCHE' il numero scelto NON è presente in bombe e NON è stato ripetuto, continuare il gioco per 100-16 tentativi. Per ogni tentativo andato a buon fine, punteggio sale di 1 e il numero viene aggiunto all'array userNumbers:
 
 while (!bombs.includes(userChoice) && userNumbers.length < 84) {
     if (userNumbers.includes(userChoice)) {
@@ -100,6 +99,7 @@ while (!bombs.includes(userChoice) && userNumbers.length < 84) {
     }
 }
 
+// Controllare se il numero scelto è in array bombe. Se sì, game over.
 if (bombs.includes(userChoice)) {
 
     alert("GAME OVER.");
