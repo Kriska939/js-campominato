@@ -45,36 +45,43 @@ con difficoltà 2 => tra 1 e 50
 // imposto alert contenente win e punteggio
 
 
-// ------------------ CODICE ------------------
+// ------------------ BLOCCO 1 ------------------
 
-// Blocco 1 - Creazione vari array + funzione generazione numeri random
+//Creazione vari array + variabili per salvare dati
 
 let bombs = [];
 let userNumbers = [];
 let points = 0;
 
 
-// ATTENZIONE: TODO - aggiungere condizione per avere solo numeri diversi 
+// funzione per generare nr random FINCHE' non arrivo a 16 numeri DIVERSI tra loro. Push di ogni numero in array bombe (punto 1)
 
-function generateNumbers(min, max, arrayBombs) {
+// genero numeri tramite funzione:
 
-    let i = 0;
-    while (i < 16) {
+function generateNumbers(min, max) {
 
-        arrayBombs.push(Math.floor(Math.random() * (max - min + 1) + min));
+    return Math.floor(Math.random() * (max - min + 1) + min);
 
-        i++
-    }
-
-    return arrayBombs;
 }
 
-bombs = generateNumbers(1, 100, bombs);
+// utilizzo while per ripetere la funzione FINCHE' l'array non contiene 16 numeri DIVERSI: 
+
+// lunghezza array <16 perché parto a contare da zero:
+
+while (bombs.length < 16) {
+
+    var singleBomb = generateNumbers(1, 100);
+
+    if (!bombs.includes(singleBomb)) {
+
+        bombs.push(singleBomb);
+    }
+}
 
 // check bombs generator:
-// console.log(bombs);
+console.log(bombs);
 
-
+//--------------------BLOCCO 2---------------------------
 
 
 
