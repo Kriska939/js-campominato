@@ -83,5 +83,27 @@ console.log(bombs);
 
 //--------------------BLOCCO 2---------------------------
 
+// 1. Chiedere un numero all'utente:
+
+var userChoice = parseInt(prompt("Scegli un numero da 1 a 100", 1));
 
 
+// 2. Controllare se il numero scelto è in array bombe. Se sì, game over.
+
+
+while (!bombs.includes(userChoice) && userNumbers.length < 84) {
+    if (userNumbers.includes(userChoice)) {
+        userChoice = parseInt(prompt("Scegli un altro numero da 1 a 100", 1));
+    } else {
+        points += 1;
+        userNumbers.push(userChoice);
+    }
+}
+
+if (bombs.includes(userChoice)) {
+
+    alert("GAME OVER.");
+}
+
+console.log(points);
+console.log(userNumbers);
