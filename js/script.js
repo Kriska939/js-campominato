@@ -49,9 +49,16 @@ con difficoltà 2 => tra 1 e 50
 
 //Creazione vari array + variabili per salvare dati
 
-let bombs = [];
-let userNumbers = [];
+const bombs = [];
+const userNumbers = [];
 let points = 0;
+var attempts = 3;
+
+// var di stampa: 
+
+var displayChosenNumbers = document.getElementById("chosenNumbers");
+var displayPoints = document.getElementById("points");
+var displayGameEnding = document.getElementById("winOrLose");
 
 
 // funzione per generare nr random FINCHE' non arrivo a 16 numeri DIVERSI tra loro. Push di ogni numero in array bombe (punto 1)
@@ -85,12 +92,18 @@ console.log(bombs);
 
 // 1. Chiedere un numero all'utente:
 
-var userChoice = parseInt(prompt("Scegli un numero da 1 a 100", 1));
+var userChoice = (prompt("Scegli un numero da 1 a 100", 1));
 
+// VALIDATION 
+while (isNaN(userChoice) || !userChoice || userChoice.trim() === "" || userChoice < 1 || userChoice > 100) {
+    var userChoice = parseInt(prompt("Scegli un numero da 1 a 100", 1));
+}
+
+userChoice = parseInt(userChoice);
 
 // FINCHE' il numero scelto NON è presente in bombe e NON è stato ripetuto, continuare il gioco per 100-16 tentativi. Per ogni tentativo andato a buon fine, punteggio sale di 1 e il numero viene aggiunto all'array userNumbers:
 
-while (!bombs.includes(userChoice) && userNumbers.length < 84) {
+while (!bombs.includes(userChoice) && userNumbers.length < attempts) {
     if (userNumbers.includes(userChoice)) {
         userChoice = parseInt(prompt("Scegli un altro numero da 1 a 100", 1));
     } else {
@@ -99,11 +112,24 @@ while (!bombs.includes(userChoice) && userNumbers.length < 84) {
     }
 }
 
-// Controllare se il numero scelto è in array bombe. Se sì, game over.
+// Controllare se il numero scelto è in array bombe. Se sì, game over (con stampa)
 if (bombs.includes(userChoice)) {
 
     alert("GAME OVER.");
+    displayGameEnding.innerText = "GAME OVER :("
+}
+
+// alert per il win + stampa esito
+
+if (userNumbers.length === attempts) {
+    alert("CONGRATS! YOU HAVE WON!");
+    displayGameEnding.innerText = "CONGRATS! YOU HAVE WON!"
 }
 
 console.log(points);
 console.log(userNumbers);
+
+// STAMPA delle scelte dell'utente + punti ottenuti:
+
+displayChosenNumbers.innerText = "I numeri che hai scelto sono stati: " + userNumbers;
+displayPoints.innerText = "Hai totalizzato: " + points + " punti."

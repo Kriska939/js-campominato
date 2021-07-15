@@ -1,0 +1,11 @@
+body {
+    background-color: pink;
+}
+
+#game {
+    text-align: center;
+}
+
+#winOrLose {
+    font-weight: bold;
+}
