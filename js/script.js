@@ -112,6 +112,8 @@ while (!bombs.includes(userChoice) && userNumbers.length < attempts) {
     }
 }
 
+//***********************BLOCCO 2.5 */
+
 // Controllare se il numero scelto è in array bombe. Se sì, game over (con stampa)
 if (bombs.includes(userChoice)) {
 
